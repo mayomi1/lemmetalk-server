@@ -9,7 +9,9 @@ const router = require('./router');
 
 const app = express();
 const server = http.createServer(app);
-const io = socketio(server);
+const port = process.env.PORT || 5000;
+server.listen(port, () => console.log(`Server has started on: http://localhost:${port}`));
+const io = socketio(server).listen(server);
 
 app.use(cors());
 app.use(router);
@@ -48,6 +50,4 @@ io.on('connect', (socket) => {
   })
 });
 
-const port = process.env.PORT || 5000;
 
-server.listen(port, () => console.log(`Server has started on: http://localhost:${port}`));
