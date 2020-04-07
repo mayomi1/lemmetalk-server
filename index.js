@@ -48,4 +48,6 @@ io.on('connect', (socket) => {
   })
 });
 
-server.listen(process.env.PORT || 5000, () => console.log(`Server has started on: http://localhost:5000`));
+const port = process.env.PORT || 5000;
+
+server.listen(port, () => console.log(`Server has started on: http://localhost:${port}`));
